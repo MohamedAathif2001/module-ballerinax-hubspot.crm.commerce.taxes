@@ -10,7 +10,7 @@ The OpenAPI specification is obtained from (TODO: Add source link).
 These changes are done in order to improve the overall usability, and as workarounds for some known language limitations.
 
 [//]: # (TODO: Add sanitation details)
-1. 
+1. `date-time` type mentioned in `discounts.json` was changed to `datetime`.
 2. 
 3. 
 

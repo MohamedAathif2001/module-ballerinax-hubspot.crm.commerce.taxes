@@ -707,15 +707,15 @@
           "properties" : {
             "completedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "requestedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "startedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "links" : {
               "type" : "object",
@@ -805,7 +805,7 @@
           "properties" : {
             "completedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "numErrors" : {
               "type" : "integer",
@@ -813,11 +813,11 @@
             },
             "requestedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "startedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "links" : {
               "type" : "object",
@@ -876,15 +876,15 @@
           "properties" : {
             "completedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "requestedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "startedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "links" : {
               "type" : "object",
@@ -938,7 +938,7 @@
             },
             "timestamp" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             }
           }
         },
@@ -979,7 +979,7 @@
           "properties" : {
             "createdAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "archived" : {
               "type" : "boolean",
@@ -987,7 +987,7 @@
             },
             "archivedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "propertiesWithHistory" : {
               "type" : "object",
@@ -1020,7 +1020,7 @@
             },
             "updatedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             }
           },
           "example" : {
@@ -1183,7 +1183,7 @@
           "properties" : {
             "completedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "numErrors" : {
               "type" : "integer",
@@ -1191,11 +1191,11 @@
             },
             "requestedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "startedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "links" : {
               "type" : "object",
@@ -1303,14 +1303,14 @@
             },
             "createdAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "archived" : {
               "type" : "boolean"
             },
             "archivedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "propertiesWithHistory" : {
               "type" : "object",
@@ -1333,7 +1333,7 @@
             },
             "updatedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             }
           },
           "example" : {
@@ -1415,14 +1415,14 @@
           "properties" : {
             "createdAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "archived" : {
               "type" : "boolean"
             },
             "archivedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             },
             "new" : {
               "type" : "boolean"
@@ -1447,7 +1447,7 @@
             },
             "updatedAt" : {
               "type" : "string",
-              "format" : "date-time"
+              "format" : "datetime"
             }
           }
         },
