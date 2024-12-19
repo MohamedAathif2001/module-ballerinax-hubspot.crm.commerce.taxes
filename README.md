@@ -10,9 +10,15 @@
 
 [//]: # (TODO: Add overview mentioning the purpose of the module, supported REST API versions, and other high-level details.)
 
+[HubSpot](https://www.hubspot.com/our-story) is a customer management system designed to help bussinesses to manage and streamline their marketing,sales and customer service activities.
+
+The `ballerinax-hubspot.crm.commerce.taxes` module is designed to help developers interact with HubSpot's Commerce Tools, particularly in managing taxes within HubSpot's CRM and e-commerce ecosystem. This module enables businesses to create, update, retrieve, and manage tax-related data via the HubSpot API.
+
 ## Setup guide
 
 [//]: # (TODO: Add detailed steps to obtain credentials and configure the module.)
+
+
 
 ## Quickstart
 
