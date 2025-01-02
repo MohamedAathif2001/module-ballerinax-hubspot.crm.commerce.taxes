@@ -8,17 +8,78 @@
 
 ## Overview
 
-[//]: # (TODO: Add overview mentioning the purpose of the module, supported REST API versions, and other high-level details.)
+[HubSpot](https://www.hubspot.com) is an AI-powered customer relationship management (CRM) platform. 
 
-[HubSpot](https://www.hubspot.com/our-story) is a customer management system designed to help bussinesses to manage and streamline their marketing,sales and customer service activities.
-
-The `ballerinax-hubspot.crm.commerce.taxes` module is designed to help developers interact with HubSpot's Commerce Tools, particularly in managing taxes within HubSpot's CRM and e-commerce ecosystem. This module enables businesses to create, update, retrieve, and manage tax-related data via the HubSpot API.
+The ballerinax/hubspot.crm.commerce.taxes offers APIs to connect and interact with the [Taxes](https://developers.hubspot.com/docs/guides/api/crm/commerce/taxes) endpoints, specifically based on the [Taxes API Docs](https://developers.hubspot.com/docs/reference/api/crm/commerce/taxes)
 
 ## Setup guide
 
-[//]: # (TODO: Add detailed steps to obtain credentials and configure the module.)
+You need a [HubSpot developer account](https://developers.hubspot.com/get-started) with an [app](https://developers.hubspot.com/docs/guides/apps/public-apps/overview) to use HubSpot connectors.
+>To create a HubSpot Developer account, [click here](https://app.hubspot.com/signup-hubspot/developers?_ga=2.207749649.2047916093.1734412948-232493525.1734412948&step=landing_page)
 
+### Step 1: Create HubSpot Developer Project
+1. [Login](https://app.hubspot.com/login) to HubSpot developer account.
 
+2. Create a public app by clicking on `Create app`.![alt text](<./docs/setup/resources/build_public_app.png>)
+
+3. Click on `Create app`.
+![alt text](<./docs/setup/resources/create_app.png>)
+
+4. Under `App Info`
+   - Enter `Public app name`.
+   - Update `App logo` (optional).
+   - Update `Description` (optional). 
+
+   ![alt text](<./docs/setup/resources/enter_app_details.png>)
+
+- Then move to `Auth` tab.
+
+5. Setup the `Redirect URLs` with respective links.
+   >Example: http://localhost:9090  
+
+   ![alt text](<./docs/setup/resources/auth_page.png>)
+
+Finally `Create app`.
+
+### Step 2: Get `Client ID` and `Client secret`.
+Navigate to `Auth` tab.
+
+![alt text](<./docs/setup/resources/client_id_secret.png>)
+
+### Step 3: Get `access token` and `refresh token`.
+
+1. Set scopes under `Auth` tab for your app based on the [API requirements](https://developers.hubspot.com/docs/reference/api).
+
+   >Example: https://developers.hubspot.com/docs/reference/api/crm/commerce/taxes
+   ![alt text](<./docs/setup/resources/exmaple_api_reference.png>)
+
+2. Under `Auth` tab under `Sample install URL (OAuth)` section `Copy full URL`.
+   >**Note:** The above copied URL is in the following format.
+   ```
+   https://app.hubspot.com/oauth/authorize?client_id=<client_id>&redirect_uri=<redirect_url>&scope=<scopes>
+   ```
+
+3. Choose the preferred account.
+
+   ![alt text](<./docs/setup/resources/account_chose.png>)
+
+   Choose account and authorize the client.
+
+4. `This site can’t be reached` message will appear. Look in the URL and find the authorization code.
+   >Example: code=na1-************************S
+
+5. Send a http request to the HubSpot.
+
+   * Linux/MacOS
+      ```
+      curl --request POST \ 
+      --url https://api.hubapi.com/oauth/v1/token \ --header 'content-type: application/x-www-form-urlencoded' \ 
+      --data 'grant_type=authorization_code&code=<code>&redirect_uri=http://localhost:9090&client_id=<client_id>&client_secret=<client_secret>'
+      ```
+
+6. Above command returns the `access token` and `refresh token`.
+
+7. Use these tokens to authorize the client.
 
 ## Quickstart
 
