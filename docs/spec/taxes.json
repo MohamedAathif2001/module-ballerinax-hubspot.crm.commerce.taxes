@@ -19,7 +19,7 @@
       "x-hubspot-introduction" : "Use the taxes API to create and manage taxes that can be included in quotes. "
     },
     "servers" : [ {
-      "url" : "https://api.hubapi.com"
+      "url" : "https://api.hubapi.com/crm/v3/objects/taxes"
     } ],
     "tags" : [ {
       "name" : "Batch"
@@ -29,7 +29,7 @@
       "name" : "Search"
     } ],
     "paths" : {
-      "/crm/v3/objects/taxes/batch/read" : {
+      "/batch/read" : {
         "post" : {
           "tags" : [ "Batch" ],
           "summary" : "Read a batch of taxes by internal ID, or unique property values",
@@ -88,7 +88,7 @@
           } ]
         }
       },
-      "/crm/v3/objects/taxes/{taxId}" : {
+      "/{taxId}" : {
         "get" : {
           "tags" : [ "Basic" ],
           "summary" : "Read",
@@ -272,7 +272,7 @@
           } ]
         }
       },
-      "/crm/v3/objects/taxes/batch/archive" : {
+      "/batch/archive" : {
         "post" : {
           "tags" : [ "Batch" ],
           "summary" : "Archive a batch of taxes by ID",
@@ -304,7 +304,7 @@
           } ]
         }
       },
-      "/crm/v3/objects/taxes/batch/create" : {
+      "/batch/create" : {
         "post" : {
           "tags" : [ "Batch" ],
           "summary" : "Create a batch of taxes",
@@ -352,7 +352,7 @@
           } ]
         }
       },
-      "/crm/v3/objects/taxes/batch/update" : {
+      "/batch/update" : {
         "post" : {
           "tags" : [ "Batch" ],
           "summary" : "Update a batch of taxes by internal ID, or unique property values",
@@ -400,7 +400,7 @@
           } ]
         }
       },
-      "/crm/v3/objects/taxes" : {
+      "/" : {
         "get" : {
           "tags" : [ "Basic" ],
           "summary" : "List",
@@ -538,7 +538,7 @@
           } ]
         }
       },
-      "/crm/v3/objects/taxes/batch/upsert" : {
+      "/batch/upsert" : {
         "post" : {
           "tags" : [ "Batch" ],
           "summary" : "Create or update a batch of taxes by unique property values",
@@ -587,7 +587,7 @@
           } ]
         }
       },
-      "/crm/v3/objects/taxes/search" : {
+      "/search" : {
         "post" : {
           "tags" : [ "Search" ],
           "operationId" : "post-/crm/v3/objects/taxes/search_doSearch",

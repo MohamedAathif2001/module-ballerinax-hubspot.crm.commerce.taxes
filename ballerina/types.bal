@@ -85,6 +85,13 @@ public type BatchResponseSimplePublicUpsertObjectWithErrors record {
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
+public type BatchReadInputSimplePublicObjectId record {
+    string[] propertiesWithHistory;
+    string idProperty?;
+    SimplePublicObjectId[] inputs;
+    string[] properties;
+};
+
 public type BatchResponseSimplePublicUpsertObject record {
     string completedAt;
     string requestedAt?;
@@ -92,13 +99,6 @@ public type BatchResponseSimplePublicUpsertObject record {
     record {|string...;|} links?;
     SimplePublicUpsertObject[] results;
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
-};
-
-public type BatchReadInputSimplePublicObjectId record {
-    string[] propertiesWithHistory;
-    string idProperty?;
-    SimplePublicObjectId[] inputs;
-    string[] properties;
 };
 
 public type ValueWithTimestamp record {
@@ -338,9 +338,6 @@ public type AssociatedId record {
 };
 
 # Provides API key configurations needed when communicating with a remote HTTP endpoint.
-# Description. 
-# + private\-app\-legacy - field description  
-# + private\-app - field description
 public type ApiKeysConfig record {|
     string private\-app\-legacy;
     string private\-app;
