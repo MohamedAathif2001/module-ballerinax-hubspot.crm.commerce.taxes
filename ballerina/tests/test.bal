@@ -62,18 +62,13 @@ function testPostTax() returns error? {
         }
     };
 
-    SimplePublicObject|error response = check taxes->/.post(payload);
+    SimplePublicObject response = check taxes->/.post(payload);
 
-    if (response is SimplePublicObject) {
-        test:assertEquals(response.properties["hs_label"], "A percentage-based tax of 8.5%", "Tax label is not created");
-        test:assertEquals(response.properties["hs_value"], "8.5000", "Tax value is not created");
-        test:assertEquals(response.properties["hs_type"], "PERCENT", "Tax type is not created");
+    test:assertEquals(response.properties["hs_label"], "A percentage-based tax of 8.5%", "Tax label is not created");
+    test:assertEquals(response.properties["hs_value"], "8.5000", "Tax value is not created");
+    test:assertEquals(response.properties["hs_type"], "PERCENT", "Tax type is not created");
 
         basicTax = response;
-    }
-    else {
-        test:assertFail("Error occured while creating tax");
-    }
 }
 
 @test:Config {
@@ -87,21 +82,15 @@ isolated function testGetTaxList() returns error? {
         properties: ["hs_value", "hs_type", "hs_label"]
     };
 
-    CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|error response = check taxes->/.get({}, params);
+    CollectionResponseSimplePublicObjectWithAssociationsForwardPaging response = check taxes->/.get({}, params);
 
-    if response is CollectionResponseSimplePublicObjectWithAssociationsForwardPaging {
+    test:assertNotEquals(response.results[0].id, (), "Tax id's are not found");
+    test:assertNotEquals(response.results[0].properties, (), "Tax properties are not found");
+    test:assertNotEquals(response.results[0].properties["hs_type"], (), "Tax label is not found");
+    test:assertNotEquals(response.results[0].properties["hs_value"], (), "Tax value is not found");
+    test:assertNotEquals(response.results[0].properties["hs_label"], (), "Tax type is not found");
+    test:assertTrue(response.results.length() <= 5, "Tax list is not found");
 
-        test:assertNotEquals(response.results[0].id, (), "Tax id's are not found");
-        test:assertNotEquals(response.results[0].properties, (), "Tax properties are not found");
-        test:assertNotEquals(response.results[0].properties["hs_type"], (), "Tax label is not found");
-        test:assertNotEquals(response.results[0].properties["hs_value"], (), "Tax value is not found");
-        test:assertNotEquals(response.results[0].properties["hs_label"], (), "Tax type is not found");
-        test:assertTrue(response.results.length() <= 5, "Tax list is not found");
-    }
-    else {
-
-        test:assertFail("Error occured while fetching tax list");
-    }
 }
 
 @test:Config {
@@ -116,18 +105,13 @@ function testGetTaxbyID() returns error? {
 
     final string taxId = basicTax.id;
 
-    SimplePublicObjectWithAssociations|error response = check taxes->/[taxId].get({}, params);
+    SimplePublicObjectWithAssociations response = check taxes->/[taxId].get({}, params);
 
-    if response is SimplePublicObjectWithAssociations {
-        test:assertEquals(response.createdAt, basicTax.createdAt, "Tax created at is not found");
-        test:assertEquals(response.updatedAt, basicTax.updatedAt, "Tax updated at is not found");
-        test:assertEquals(response.properties["hs_label"], "A percentage-based tax of 8.5%", "Tax label is not found");
-        test:assertEquals(response.properties["hs_value"], "8.5000", "Tax value is not found");
-        test:assertEquals(response.properties["hs_type"], "PERCENT", "Tax type is not found");
-    }
-    else {
-        test:assertFail("Error occured while fetching tax by id");
-    }
+    test:assertEquals(response.createdAt, basicTax.createdAt, "Tax created at is not found");
+    test:assertEquals(response.updatedAt, basicTax.updatedAt, "Tax updated at is not found");
+    test:assertEquals(response.properties["hs_label"], "A percentage-based tax of 8.5%", "Tax label is not found");
+    test:assertEquals(response.properties["hs_value"], "8.5000", "Tax value is not found");
+    test:assertEquals(response.properties["hs_type"], "PERCENT", "Tax type is not found"); 
 }
 
 @test:Config {
@@ -138,14 +122,9 @@ function testDeleteTaxbyID() returns error? {
 
     final string taxId = basicTax.id;
 
-    http:Response|error response = check taxes->/[taxId].delete();
+    http:Response response = check taxes->/[taxId].delete();
 
-    if (response is http:Response) {
-        test:assertEquals(response.statusCode, 204, "Tax is not deleted");
-    }
-    else {
-        test:assertFail("Error occured while deleting tax");
-    }
+    test:assertEquals(response.statusCode, 204, "Tax is not deleted");
 }
 
 @test:Config {
@@ -164,16 +143,12 @@ function testPatchTaxbyID() returns error? {
         }
     };
 
-    SimplePublicObject|error response = check taxes->/[taxId].patch(payload);
+    SimplePublicObject response = check taxes->/[taxId].patch(payload);
 
-    if (response is SimplePublicObject) {
-        test:assertEquals(response.properties["hs_label"], "A percentage-based tax of 6.75%", "Tax label is not updated");
-        test:assertEquals(response.properties["hs_value"], "6.7500", "Tax value is not updated");
-        test:assertEquals(response.properties["hs_type"], "PERCENT", "Tax type is not updated");
-    }
-    else {
-        test:assertFail("Error occured while updating tax");
-    }
+    test:assertEquals(response.properties["hs_label"], "A percentage-based tax of 6.75%", "Tax label is not updated");
+    test:assertEquals(response.properties["hs_value"], "6.7500", "Tax value is not updated");
+    test:assertEquals(response.properties["hs_type"], "PERCENT", "Tax type is not updated");
+
 }
 
 // @test:Config {
@@ -203,7 +178,7 @@ function testPatchTaxbyID() returns error? {
 
 //     };
 
-//     BatchResponseSimplePublicUpsertObject|BatchResponseSimplePublicUpsertObjectWithErrors|error response = check taxes->/batch/upsert.post(payload, {});
+//     BatchResponseSimplePublicUpsertObject|BatchResponseSimplePublicUpsertObjectWithErrors response = check taxes->/batch/upsert.post(payload, {});
 
 //     if (response is BatchResponseSimplePublicUpsertObject){
 
@@ -253,9 +228,9 @@ function testPostBatchUpdate() returns error? {
         ]
     };
 
-    BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors|error response = check taxes->/batch/update.post(payload, {});
+    BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors response = check taxes->/batch/update.post(payload, {});
 
-    if (!(response is BatchResponseSimplePublicObject)) {
+    if (response is BatchResponseSimplePublicObjectWithErrors) {
         test:assertFail("Error occured while batch updating taxes");
     }
 
@@ -286,17 +261,19 @@ function testPostBatchRead() returns error? {
         propertiesWithHistory: ["hs_value", "hs_type", "hs_label"]
     };
 
-    BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors|error response = check taxes->/batch/read.post(payload, {});
+    BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors response = check taxes->/batch/read.post(payload, {});
 
-    if (response is BatchResponseSimplePublicObject) {
+    if (response is BatchResponseSimplePublicObjectWithErrors) {
+
+        test:assertFail("Error occured while batch reading taxes");
+
+    }
+    else {
 
         test:assertEquals(response.results.length(), 2, "Not all the taxes are fetched");
         test:assertNotEquals(response.results[0].id, (), "Id of a fetched tax is null");
         test:assertNotEquals(response.results[1].properties, (), "properties of a fetched tax is null");
         test:assertNotEquals(response.results[0].propertiesWithHistory, (), "propertiesWithHistory of a fetched tax is null");
-    }
-    else {
-        test:assertFail("Error occured while batch reading taxes");
     }
 }
 
@@ -326,19 +303,21 @@ function testPostBatchcreate() returns error? {
         ]
     };
 
-    BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors|error response = check taxes->/batch/create.post(payload, {});
+    BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors response = check taxes->/batch/create.post(payload, {});
 
-    if (response is BatchResponseSimplePublicObject) {
+    if (response is BatchResponseSimplePublicObjectWithErrors) {
 
+        test:assertFail("Error occured while batch creating taxes");
+
+    }
+    else {
+        
         test:assertEquals(response.status, "COMPLETE", "Batch create failed");
         test:assertEquals(response.results.length(), 2, "Not all the taxes are created");
         test:assertNotEquals(response.results[0].id, (), "Id of a created tax is null");
 
         batchTaxId.push(response.results[0].id);
         batchTaxId.push(response.results[1].id);
-    }
-    else {
-        test:assertFail("Error occured while batch creating taxes");
     }
 
 }
@@ -354,22 +333,17 @@ isolated function testPostSearch() returns error? {
         properties: ["hs_label", "hs_value", "hs_type"]
     };
 
-    CollectionResponseWithTotalSimplePublicObjectForwardPaging|error response = check taxes->/search.post(payload, {});
+    CollectionResponseWithTotalSimplePublicObjectForwardPaging response = check taxes->/search.post(payload, {});
 
-    if response is CollectionResponseWithTotalSimplePublicObjectForwardPaging {
-        test:assertNotEquals(response.results, [], "No search results found");
-        test:assertTrue(response.results.length() <= 10, "Limit Exceeded");
+    test:assertNotEquals(response.results, [], "No search results found");
+    test:assertTrue(response.results.length() <= 10, "Limit Exceeded");
 
-        foreach SimplePublicObject result in response.results {
+    foreach SimplePublicObject result in response.results {
 
-            test:assertNotEquals(result.id, (), "Tax ID is not found");
-            test:assertNotEquals(result.properties, (), "Tax properties are not found");
-            test:assertNotEquals(result.properties["hs_type"], (), "Tax type is not found");
-            test:assertNotEquals(result.properties["hs_value"], (), "Tax value is not found");
-        }
-
-    } else {
-        test:assertFail("Error occurred while searching discounts");
+        test:assertNotEquals(result.id, (), "Tax ID is not found");
+        test:assertNotEquals(result.properties, (), "Tax properties are not found");
+        test:assertNotEquals(result.properties["hs_type"], (), "Tax type is not found");
+        test:assertNotEquals(result.properties["hs_value"], (), "Tax value is not found");
     }
 }
 
@@ -383,12 +357,7 @@ function testPostBatchArchive() returns error? {
         inputs: [{id: batchTaxId[0]}, {id: batchTaxId[1]}]
     };
 
-    http:Response|error response = check taxes->/batch/archive.post(payload, {});
+    http:Response response = check taxes->/batch/archive.post(payload, {});
 
-    if (response is http:Response) {
-        test:assertEquals(response.statusCode, 204, "Batch archive failed");
-    }
-    else {
-        test:assertFail("Error occured while batch archiving taxes");
-    }
+    test:assertEquals(response.statusCode, 204, "Batch archive failed");
 }
