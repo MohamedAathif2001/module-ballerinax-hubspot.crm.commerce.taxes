@@ -2,15 +2,27 @@
 distribution = "2201.10.0"
 org = "ballerinax"
 name = "hubspot.crm.commerce.taxes"
+<<<<<<< HEAD
 version = "1.0.0"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
 keywords = [] # TODO: Add keywords
 # icon = "icon.png" # TODO: Add icon
+=======
+version = "1"
+license = ["Apache-2.0"]
+authors = ["Ballerina"]
+keywords = []
+# icon = "icon.png" # TODO: update icon.png
+>>>>>>> 943b169555cf521ef0d54ac605da027c60381b1b
 repository = "https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.commerce.taxes"
 
 [build-options]
 observabilityIncluded = true
 
+<<<<<<< HEAD
 [platform.java17]
+=======
+[platform.java21]
+>>>>>>> 943b169555cf521ef0d54ac605da027c60381b1b
 graalvmCompatible = true

@@ -12,5 +12,9 @@ repository = "https://github.com/ballerina-platform/module-ballerinax-hubspot.cr
 [build-options]
 observabilityIncluded = true
 
+<<<<<<< HEAD
 [platform.java17]
+=======
+[platform.java21]
+>>>>>>> 943b169555cf521ef0d54ac605da027c60381b1b
 graalvmCompatible = true

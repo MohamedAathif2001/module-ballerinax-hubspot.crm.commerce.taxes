@@ -8,6 +8,7 @@
 
 ## Overview
 
+<<<<<<< HEAD
 [HubSpot](https://www.hubspot.com) is an AI-powered customer relationship management (CRM) platform. 
 
 The ballerinax/hubspot.crm.commerce.taxes offers APIs to connect and interact with the [Taxes](https://developers.hubspot.com/docs/guides/api/crm/commerce/taxes) endpoints, specifically based on the [Taxes API Docs](https://developers.hubspot.com/docs/reference/api/crm/commerce/taxes)
@@ -144,13 +145,28 @@ Now, utilize the available connector operations. A sample usecase is shown below
 
    };
 ```
+=======
+[//]: # (TODO: Add overview mentioning the purpose of the module, supported REST API versions, and other high-level details.)
+
+## Setup guide
+
+[//]: # (TODO: Add detailed steps to obtain credentials and configure the module.)
+
+## Quickstart
+
+[//]: # (TODO: Add a quickstart guide to demonstrate a basic functionality of the module, including sample code snippets.)
+>>>>>>> 943b169555cf521ef0d54ac605da027c60381b1b
 
 ## Examples
 
 The `HubSpot CRM Commerce Taxes` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/module-ballerinax-hubspot.crm.commerce.taxes/tree/main/examples/), covering the following use cases:
 
+<<<<<<< HEAD
 1. [Manage Taxes](/examples/manage-taxes/) - see how the Hubspot taxes API can be used to create a tax and manage it through the sales pipeline.
 2. 
+=======
+[//]: # (TODO: Add examples)
+>>>>>>> 943b169555cf521ef0d54ac605da027c60381b1b
 
 ## Build from the source
 
