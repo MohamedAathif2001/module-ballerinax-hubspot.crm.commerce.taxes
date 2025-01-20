@@ -49,7 +49,8 @@ SimplePublicObject basicTax = {
 string[] batchTaxId = [];
 
 @test:Config {
-    groups: ["live_service_test"]
+    groups: ["live_service_test"],
+    enable: enableClientOauth2
 }
 function testPostTax() returns error? {
 
@@ -72,7 +73,8 @@ function testPostTax() returns error? {
 }
 
 @test:Config {
-    groups: ["live_service_test"]
+    groups: ["live_service_test"],
+    enable: enableClientOauth2
 }
 function testGetTaxList() returns error? {
 
@@ -96,7 +98,8 @@ function testGetTaxList() returns error? {
 
 @test:Config {
     groups: ["live_service_test"],
-    dependsOn: [testPostTax]
+    dependsOn: [testPostTax],
+    enable: enableClientOauth2
 }
 function testGetTaxbyID() returns error? {
 
@@ -117,7 +120,8 @@ function testGetTaxbyID() returns error? {
 
 @test:Config {
     groups: ["live_service_test"],
-    dependsOn: [testPatchTaxbyID]
+    dependsOn: [testPatchTaxbyID],
+    enable: enableClientOauth2
 }
 function testDeleteTaxbyID() returns error? {
 
@@ -130,7 +134,8 @@ function testDeleteTaxbyID() returns error? {
 
 @test:Config {
     groups: ["live_service_test"],
-    dependsOn: [testGetTaxbyID]
+    dependsOn: [testGetTaxbyID],
+    enable: enableClientOauth2
 }
 function testPatchTaxbyID() returns error? {
 
@@ -154,7 +159,8 @@ function testPatchTaxbyID() returns error? {
 
 @test:Config {
     groups: ["live_service_test"],
-    dependsOn: [testPostBatchRead]
+    dependsOn: [testPostBatchRead],
+    enable: enableClientOauth2
 }
 function testPostBatchUpdate() returns error? {
 
@@ -203,7 +209,8 @@ function testPostBatchUpdate() returns error? {
 
 @test:Config {
     groups: ["live_service_test"],
-    dependsOn: [testPostBatchcreate]
+    dependsOn: [testPostBatchcreate],
+    enable: enableClientOauth2
 }
 function testPostBatchRead() returns error? {
 
@@ -229,7 +236,8 @@ function testPostBatchRead() returns error? {
 }
 
 @test:Config {
-    groups: ["live_service_test"]
+    groups: ["live_service_test"],
+    enable: enableClientOauth2
 }
 function testPostBatchcreate() returns error? {
 
@@ -272,7 +280,8 @@ function testPostBatchcreate() returns error? {
 }
 
 @test:Config {
-    groups: ["live_service_test"]
+    groups: ["live_service_test"],
+    enable: enableClientOauth2
 }
 isolated function testPostSearch() returns error? {
     PublicObjectSearchRequest payload = {
@@ -297,7 +306,8 @@ isolated function testPostSearch() returns error? {
 
 @test:Config {
     groups: ["live_service_test"],
-    dependsOn: [testPostBatchUpdate]
+    dependsOn: [testPostBatchUpdate],
+    enable: enableClientOauth2
 }
 function testPostBatchArchive() returns error? {
 
